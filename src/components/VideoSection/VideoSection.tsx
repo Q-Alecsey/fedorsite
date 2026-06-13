@@ -24,7 +24,7 @@ const videos: VideoItem[] = [
     duration: '14:25',
     tags: ['ЕГЭ Профиль', 'Задание 13', 'Тригонометрия'],
     equation: 'cos(2x) - 3sin(x) + 2 = 0',
-    link: '/video/Online1.mp4'
+    link: `${import.meta.env.BASE_URL}video/Online1.mp4`
   },
   {
     id: 'vid2',
@@ -33,7 +33,7 @@ const videos: VideoItem[] = [
     duration: '16:40',
     tags: ['ЕГЭ Информатика', 'Python', 'Алгоритмы'],
     equation: 'def search(arr): O(N)',
-    link: '/video/Online2.mp4'
+    link: `${import.meta.env.BASE_URL}video/Online2.mp4`
   },
 ];
 
