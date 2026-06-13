@@ -1,0 +1,47 @@
+// ==========================================
+// BACKUP: Dark Indigo Theme (to roll back, swap this with the active theme)
+// $bg-main: #121730;
+// $bg-glass: rgba(18, 23, 52, 0.35);
+// $bg-glass-hover: rgba(26, 33, 72, 0.5);
+// $bg-header: rgba(18, 23, 48, 0.65);
+// $primary-glow: #2563eb;    // Bright Electric Blue
+// $secondary-glow: #7c3aed;  // Deep Neon Violet
+// ==========================================
+
+// ACTIVE: Teal & Gold Carbon Theme (Cardinally Different)
+$bg-main: #0c0f12;                     // Charcoal carbon background
+$bg-glass: rgba(15, 20, 25, 0.4);       // Carbon glass
+$bg-glass-hover: rgba(22, 28, 35, 0.55); // Carbon glass hover
+$bg-header: rgba(12, 15, 18, 0.7);      // Header glass
+
+// Accent Colors
+$primary-glow: #0d9488;    // Neon Icy Teal
+$secondary-glow: #d97706;  // Warm Amber / Gold
+$accent-teal: #06b6d4;     // Neon Cyan
+
+// Text Colors
+$text-primary: #f8fafc;
+$text-secondary: #94a3b8;
+$text-muted: #64748b;
+
+// Borders
+$border-glass: rgba(255, 255, 255, 0.07);
+$border-glass-hover: rgba(255, 255, 255, 0.15);
+
+// Shadows & Glows
+$shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+$shadow-glow-blue: 0 0 40px rgba(37, 99, 235, 0.15);
+$shadow-glow-purple: 0 0 40px rgba(124, 58, 237, 0.15);
+
+// Fonts
+$font-sans: 'Manrope', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// Transitions
+$transition-smooth: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+$transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-widescreen: 1280px;

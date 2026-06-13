@@ -1,0 +1,179 @@
+@use '@scss/index' as utils;
+
+.videoSection {
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 5rem 0;
+  }
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.title {
+  @include utils.font-style(2.5rem, 800, 1.2, utils.$text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  
+  span {
+    background: linear-gradient(135deg, utils.$primary-glow, utils.$secondary-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.subtitle {
+  @include utils.font-style(1.1rem, 400, 1.5, utils.$text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.videoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  @include utils.glass;
+  background: rgba(10, 14, 35, 0.4);
+  cursor: pointer;
+  
+  // Grid blackboard effect inside placeholder
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+      linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+    background-size: 100% 100%, 30px 30px, 30px 30px;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.videoPlaceholder {
+  position: absolute;
+  inset: 0;
+  @include utils.flex-center(column);
+  z-index: 2;
+  transition: utils.$transition-smooth;
+  
+  // Math overlay equations as decoration
+  .mathOverlay {
+    position: absolute;
+    font-family: serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.03);
+    user-select: none;
+    
+    &.topL { top: 15%; left: 10%; }
+    &.bottomR { bottom: 15%; right: 10%; }
+  }
+}
+
+.playBtn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  @include utils.glass;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  @include utils.flex-center;
+  color: utils.$text-primary;
+  transition: utils.$transition-smooth;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  svg {
+    fill: currentColor;
+    margin-left: 4px; // center alignment adjust
+    width: 22px;
+    height: 22px;
+    transition: utils.$transition-fast;
+  }
+}
+
+.videoWrapper:hover {
+  @include utils.glass-hover;
+  
+  .playBtn {
+    background: rgba(37, 99, 235, 0.25);
+    border-color: rgba(37, 99, 235, 0.6);
+    transform: scale(1.1);
+    color: #fff;
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.5);
+    
+    svg {
+      transform: scale(1.1);
+    }
+  }
+  
+  .videoPlaceholder {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.videoTitle {
+  @include utils.font-style(1.2rem, 700, 1.4, utils.$text-primary);
+  transition: utils.$transition-fast;
+  
+  .videoCard:hover & {
+    color: utils.$primary-glow;
+  }
+}
+
+.videoDesc {
+  @include utils.font-style(0.95rem, 400, 1.5, utils.$text-secondary);
+}
+
+.tagContainer {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  @include utils.font-style(0.75rem, 500, 1, utils.$text-secondary);
+}

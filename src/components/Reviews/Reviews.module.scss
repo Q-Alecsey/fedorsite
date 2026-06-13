@@ -1,0 +1,168 @@
+@use '@scss/index' as utils;
+
+.reviewsSection {
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 5rem 0;
+  }
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+}
+
+.title {
+  @include utils.font-style(2.5rem, 800, 1.2, utils.$text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  
+  span {
+    background: linear-gradient(135deg, utils.$primary-glow, utils.$secondary-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.subtitle {
+  @include utils.font-style(1.1rem, 400, 1.5, utils.$text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// 3D Perspective Card Grid
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  perspective: 1200px; // enable 3D space for cards
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+// Card Wrapper for 3D Transform
+.cardPerspectiveWrapper {
+  transform-style: preserve-3d;
+  height: 100%;
+}
+
+.reviewCard {
+  @include utils.glass;
+  background: rgba(10, 14, 35, 0.25);
+  border-radius: 20px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  transition: 
+    border-color 0.4s ease, 
+    background-color 0.4s ease, 
+    box-shadow 0.4s ease;
+  
+  // Glowing reflection on hover
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &.hovered {
+    @include utils.glass-hover;
+    background-color: rgba(15, 22, 50, 0.45);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .quoteIcon {
+      color: rgba(37, 99, 235, 0.15);
+      transform: scale(1.1);
+    }
+
+    .badge {
+      box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+    }
+  }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.studentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.name {
+  @include utils.font-style(1.2rem, 700, 1.2, utils.$text-primary);
+}
+
+.subInfo {
+  @include utils.font-style(0.85rem, 500, 1.2, utils.$text-muted);
+}
+
+.badge {
+  padding: 0.35rem 0.85rem;
+  border-radius: 99px;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  @include utils.font-style(0.85rem, 700, 1, utils.$primary-glow);
+  white-space: nowrap;
+  transition: utils.$transition-fast;
+}
+
+.comment {
+  @include utils.font-style(1rem, 400, 1.6, utils.$text-secondary);
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
+}
+
+.quoteIcon {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  font-size: 5rem;
+  line-height: 1;
+  font-family: serif;
+  color: rgba(255, 255, 255, 0.02);
+  user-select: none;
+  font-weight: 900;
+  transition: utils.$transition-smooth;
+  pointer-events: none;
+}

@@ -1,0 +1,54 @@
+@use 'variables' as vars;
+
+// Glassmorphism Mixin
+@mixin glass {
+  background: vars.$bg-glass;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid vars.$border-glass;
+  box-shadow: vars.$shadow-glass;
+}
+
+@mixin glass-hover {
+  background: vars.$bg-glass-hover;
+  border-color: vars.$border-glass-hover;
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+// Media Queries (Mobile First)
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: vars.$breakpoint-mobile) { @content; }
+  }
+  @else if $breakpoint == tablet {
+    @media (min-width: vars.$breakpoint-tablet) { @content; }
+  }
+  @else if $breakpoint == desktop {
+    @media (min-width: vars.$breakpoint-desktop) { @content; }
+  }
+  @else if $breakpoint == widescreen {
+    @media (min-width: vars.$breakpoint-widescreen) { @content; }
+  }
+}
+
+// Typography Mixin
+@mixin font-style($size: 1rem, $weight: 400, $lh: 1.5, $color: vars.$text-primary) {
+  font-family: vars.$font-sans;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lh;
+  color: $color;
+}
+
+// Center Flex
+@mixin flex-center($dir: row) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: center;
+  justify-content: center;
+}
+
+// Interactive neon text/box shadow on active/hover state
+@mixin glow($color, $intensity: 0.15) {
+  box-shadow: 0 0 25px rgba($color, $intensity);
+}

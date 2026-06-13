@@ -1,0 +1,481 @@
+@use '@scss/index' as utils;
+
+.section {
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 5rem 0;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  background: rgba(13, 148, 136, 0.1);
+  border: 1px solid rgba(13, 148, 136, 0.2);
+  @include utils.font-style(0.85rem, 600, 1, utils.$primary-glow);
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.title {
+  @include utils.font-style(2.5rem, 800, 1.2, utils.$text-primary);
+  margin-bottom: 1.25rem;
+  max-width: 680px;
+  letter-spacing: -0.5px;
+  
+  span {
+    background: linear-gradient(135deg, utils.$primary-glow, utils.$secondary-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.subtitle {
+  @include utils.font-style(1.15rem, 400, 1.6, utils.$text-secondary);
+  max-width: 600px;
+  margin: 0;
+}
+
+// Filters Styles
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 20px;
+  @include utils.glass;
+  background: rgba(255, 255, 255, 0.01);
+  margin-bottom: 3.5rem;
+  
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+.filterLabel {
+  @include utils.font-style(0.95rem, 700, 1, utils.$secondary-glow);
+  min-width: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tabBtn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  @include utils.font-style(0.9rem, 600, 1, utils.$text-secondary);
+  cursor: pointer;
+  transition: utils.$transition-fast;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: utils.$text-primary;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  &.active {
+    background: rgba(13, 148, 136, 0.15);
+    border-color: rgba(13, 148, 136, 0.4);
+    color: #06b6d4;
+    box-shadow: 0 0 10px rgba(13, 148, 136, 0.15);
+  }
+}
+
+// Stories Grid
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  border-radius: 20px;
+  @include utils.glass;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
+  cursor: pointer;
+  transition: utils.$transition-smooth;
+  
+  &:hover {
+    @include utils.glass-hover;
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-6px);
+    border-color: rgba(13, 148, 136, 0.3);
+    
+    .readMoreLink {
+      color: utils.$primary-glow;
+      
+      svg {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+.cardHeader {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.studentName {
+  @include utils.font-style(1.25rem, 700, 1.3, utils.$text-primary);
+  margin: 0;
+}
+
+.cardBadges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.courseBadge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(217, 119, 6, 0.1);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  @include utils.font-style(0.75rem, 600, 1, utils.$secondary-glow);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.yearBadge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  @include utils.font-style(0.75rem, 600, 1, utils.$text-muted);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.teaserItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.teaserLabel {
+  @include utils.font-style(0.8rem, 700, 1, utils.$text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.teaserText {
+  @include utils.font-style(0.95rem, 400, 1.5, utils.$text-secondary);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 1rem;
+}
+
+.readMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  @include utils.font-style(0.9rem, 600, 1, utils.$text-secondary);
+  transition: utils.$transition-fast;
+  
+  svg {
+    width: 14px;
+    height: 10px;
+    stroke: currentColor;
+    transition: transform 0.2s ease;
+  }
+}
+
+// Empty State
+.emptyState {
+  text-align: center;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  @include utils.glass;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  
+  svg {
+    width: 48px;
+    height: 48px;
+    color: utils.$text-muted;
+  }
+  
+  p {
+    @include utils.font-style(1.05rem, 400, 1.5, utils.$text-secondary);
+    margin: 0;
+    max-width: 400px;
+  }
+}
+
+// Load More Button
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.loadMoreBtn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1rem 2.5rem;
+  border-radius: 16px;
+  @include utils.glass;
+  background: rgba(13, 148, 136, 0.03);
+  border-color: rgba(13, 148, 136, 0.2);
+  @include utils.font-style(1rem, 700, 1, utils.$text-primary);
+  cursor: pointer;
+  transition: utils.$transition-smooth;
+  
+  .countInfo {
+    @include utils.font-style(0.8rem, 500, 1, utils.$text-muted);
+  }
+  
+  &:hover {
+    @include utils.glass-hover;
+    background: rgba(13, 148, 136, 0.1);
+    border-color: rgba(13, 148, 136, 0.4);
+    box-shadow: 0 0 20px rgba(13, 148, 136, 0.15);
+    color: #06b6d4;
+    
+    .countInfo {
+      color: utils.$text-secondary;
+    }
+  }
+}
+
+// Modal Styles
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(6, 8, 12, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1.5rem;
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 24px;
+  @include utils.glass;
+  background: rgba(12, 15, 20, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(13, 148, 136, 0.1);
+  padding: 2.5rem;
+  position: relative;
+  
+  @media (max-width: 640px) {
+    padding: 1.5rem;
+  }
+  
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: utils.$text-secondary;
+  @include utils.flex-center;
+  cursor: pointer;
+  transition: utils.$transition-fast;
+  
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  &:hover {
+    background: rgba(244, 63, 94, 0.1);
+    border-color: rgba(244, 63, 94, 0.3);
+    color: #f43f5e;
+    transform: rotate(90deg);
+  }
+}
+
+.modalHeader {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 1.5rem;
+}
+
+.modalBadge {
+  display: inline-flex;
+  @include utils.font-style(0.8rem, 600, 1, utils.$primary-glow);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+}
+
+.modalStudentName {
+  @include utils.font-style(2rem, 800, 1.2, utils.$text-primary);
+  margin: 0 0 1rem 0;
+  
+  @media (max-width: 640px) {
+    font-size: 1.6rem;
+  }
+}
+
+.modalMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.modalMetaItem {
+  @include utils.font-style(0.95rem, 400, 1, utils.$text-secondary);
+  
+  strong {
+    color: utils.$secondary-glow;
+    font-weight: 600;
+  }
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modalSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  
+  .sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    h4 {
+      margin: 0;
+      @include utils.font-style(1.1rem, 700, 1, utils.$text-primary);
+    }
+  }
+  
+  .sectionIndicator {
+    width: 6px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  
+  .sectionBody p {
+    margin: 0;
+    @include utils.font-style(1.05rem, 400, 1.6, utils.$text-secondary);
+  }
+  
+  &[data-type="before"] {
+    .sectionIndicator {
+      background: utils.$secondary-glow;
+    }
+  }
+  
+  &[data-type="after"] {
+    background: rgba(13, 148, 136, 0.02);
+    border-color: rgba(13, 148, 136, 0.15);
+    
+    .sectionIndicator {
+      background: utils.$primary-glow;
+      box-shadow: 0 0 8px utils.$primary-glow;
+    }
+    
+    .sectionBody p {
+      color: utils.$text-primary;
+      font-weight: 500;
+    }
+  }
+}

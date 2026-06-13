@@ -1,0 +1,175 @@
+@use '@scss/index' as utils;
+
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 120px; // account for header
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding-top: 100px;
+    min-height: auto;
+    padding-bottom: 4rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 10;
+  
+  @media (max-width: 1024px) {
+    align-items: center;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  @include utils.font-style(0.85rem, 600, 1, utils.$primary-glow);
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.title {
+  @include utils.font-style(3.5rem, 800, 1.15, utils.$text-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+  
+  span {
+    background: linear-gradient(135deg, utils.$primary-glow, utils.$secondary-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.description {
+  @include utils.font-style(1.15rem, 400, 1.6, utils.$text-secondary);
+  margin-bottom: 2.5rem;
+  max-width: 580px;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  
+  @media (max-width: 1024px) {
+    justify-content: flex-start;
+  }
+}
+
+.featureIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: utils.$secondary-glow;
+  @include utils.flex-center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.featureText {
+  @include utils.font-style(1rem, 500, 1.4, utils.$text-primary);
+}
+
+// Visual Graphics Box (Right Column)
+.visualContainer {
+  position: relative;
+  @include utils.flex-center;
+  width: 100%;
+  z-index: 5;
+}
+
+.glassCard {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1;
+  border-radius: 24px;
+  @include utils.glass;
+  background: rgba(10, 14, 35, 0.25);
+  padding: 2rem;
+  @include utils.flex-center(column);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(37, 99, 235, 0.15);
+    filter: blur(50px);
+    border-radius: 50%;
+    top: 10%;
+    right: 10%;
+    z-index: -1;
+  }
+  
+  @media (max-width: 1024px) {
+    max-width: 300px;
+  }
+}
+
+.mathGraph {
+  width: 100%;
+  height: 100%;
+  stroke-dasharray: 4;
+}
+
+// Floating parallax items
+.parallaxItem {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  @include utils.font-style(2.5rem, 300, 1, rgba(255, 255, 255, 0.08));
+  user-select: none;
+  font-family: 'Outfit', 'Times New Roman', serif;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.02);
+  
+  &.formula1 { top: 15%; left: 10%; font-size: 2.2rem; color: rgba(37, 99, 235, 0.12); }
+  &.formula2 { top: 25%; right: 15%; font-size: 1.8rem; color: rgba(124, 58, 237, 0.12); }
+  &.formula3 { bottom: 20%; left: 20%; font-size: 3rem; color: rgba(255, 255, 255, 0.05); }
+  &.formula4 { bottom: 35%; right: 25%; font-size: 2rem; color: rgba(13, 148, 136, 0.12); }
+  &.symbol1 { top: 45%; left: 5%; font-size: 3.5rem; color: rgba(255, 255, 255, 0.04); }
+  &.symbol2 { top: 70%; right: 10%; font-size: 2.8rem; color: rgba(124, 58, 237, 0.08); }
+  &.symbol3 { bottom: 10%; left: 45%; font-size: 2.4rem; color: rgba(37, 99, 235, 0.08); }
+}
