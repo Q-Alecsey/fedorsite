@@ -1,8 +1,6 @@
 
 import styles from './PlayableVideo.module.scss'
 
-import {useState} from 'react'
-
 interface Props{
     link: string,
 
@@ -10,18 +8,31 @@ interface Props{
 
 const PlayableVideo = ({link}: Props) => {
 
-    const [showControls, setshowControls] = useState(false);
-
     return (
         <video 
         src={link} 
         className={styles.video} 
-        controls={showControls}
-        onMouseEnter={() => setshowControls(true)}
-        onMouseLeave={() => setshowControls(false)}
-        onTouchStart={() => setshowControls(true)}
+        controls
         />
     )
 }
 
 export default PlayableVideo;
+
+
+
+// const PlayableVideo = ({link}: Props) => {
+
+//     const [showControls, setshowControls] = useState(false);
+
+//     return (
+//         <video 
+//         src={link} 
+//         className={styles.video} 
+//         controls={showControls}
+//         onMouseEnter={() => setshowControls(true)}
+//         onMouseLeave={() => setshowControls(false)}
+//         onTouchStart={() => setshowControls(true)}
+//         />
+//     )
+// }
